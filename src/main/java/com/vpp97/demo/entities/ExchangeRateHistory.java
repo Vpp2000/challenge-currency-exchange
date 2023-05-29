@@ -35,5 +35,4 @@ public class ExchangeRateHistory {
     private BigDecimal rate;
     private String currencyName;
     private String currencyCode;
-    private String username;
 }
