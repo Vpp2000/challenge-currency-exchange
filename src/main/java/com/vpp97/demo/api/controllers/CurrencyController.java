@@ -2,7 +2,9 @@ package com.vpp97.demo.api.controllers;
 
 import com.vpp97.demo.api.services.ExchangeService;
 import com.vpp97.demo.dto.request.CreateCurrencyExchangeRequest;
+import com.vpp97.demo.dto.request.CurrencyExchangeCalculationRequest;
 import com.vpp97.demo.dto.request.UpdateCurrencyExchangeRequest;
+import com.vpp97.demo.dto.response.CurrencyExchangeCalculationResponse;
 import com.vpp97.demo.dto.response.CurrencyExchangeResponse;
 import com.vpp97.demo.dto.response.FieldErrorsResponse;
 import com.vpp97.demo.dto.response.SuccessfulControllerResponse;
@@ -61,6 +63,18 @@ public class CurrencyController {
                 .data(currencyExchangeResponse)
                 .build();
         return ResponseEntity.status(HttpStatus.OK).body(genericControllerResponse);
+    }
+
+    @PostMapping("exchange")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<SuccessfulControllerResponse<CurrencyExchangeCalculationResponse>> calculateCurrencyExchange(@RequestBody @Valid CurrencyExchangeCalculationRequest currencyExchangeCalculationRequest){
+        CurrencyExchangeCalculationResponse currencyExchangeCalculationResponse = this.exchangeService.calculateCurrencyExchange(currencyExchangeCalculationRequest);
+        SuccessfulControllerResponse genericControllerResponse = SuccessfulControllerResponse.<CurrencyExchangeCalculationResponse>builder()
+                .message("Currency calculation done successfully")
+                .data(currencyExchangeCalculationResponse)
+                .build();
+        return ResponseEntity.status(HttpStatus.OK).body(genericControllerResponse);
+
     }
 
 }

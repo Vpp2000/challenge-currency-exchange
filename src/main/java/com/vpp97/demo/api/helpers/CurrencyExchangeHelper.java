@@ -78,4 +78,9 @@ public class CurrencyExchangeHelper {
                 .rate(exchangeRateHistory.getRate())
                 .build();
     }
+
+    public Currency getCurrencyByCode(String currencyCode) {
+        Currency currency = this.currencyRepository.findByCode(currencyCode).orElseThrow(() -> new ElementNotFoundException("Currency not found"));
+        return currency;
+    }
 }
