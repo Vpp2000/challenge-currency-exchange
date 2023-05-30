@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  exchange-currency-api:
+    restart: on-failure
+    container_name: exchange-currency-api
+    image: vpp97/currency-sofftek-h2:latest
+    ports:
+      - "8888:8888"
