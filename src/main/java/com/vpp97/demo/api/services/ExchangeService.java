@@ -46,7 +46,7 @@ public class ExchangeService {
 
 
         BigDecimal calculationRate = originRate.getRate().divide(targetRate.getRate(), 4, RoundingMode.HALF_UP);
-        BigDecimal targetAmount = currencyExchangeCalculationRequest.getOriginAmount().multiply(calculationRate);
+        BigDecimal targetAmount = currencyExchangeCalculationRequest.getOriginAmount().multiply(calculationRate).setScale(4, RoundingMode.HALF_UP);
 
 
         return CurrencyExchangeCalculationResponse.builder()
