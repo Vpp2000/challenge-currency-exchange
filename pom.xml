@@ -86,7 +86,7 @@
                     </from>
                     <container>
                         <ports>
-                            <port>9999</port>
+                            <port>8888</port>
                         </ports>
                     </container>
                 </configuration>
